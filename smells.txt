@@ -1,0 +1,6 @@
+Smells Questions
+MP3
+
+1. The code smell is duplicated code. The code from line 558 is repeated in line 606. This can be fixed by removing the repeated code and running it via a method instead.
+
+
