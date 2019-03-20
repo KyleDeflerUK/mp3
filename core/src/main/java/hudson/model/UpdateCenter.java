@@ -556,7 +556,7 @@ public class UpdateCenter extends AbstractModelObject implements Saveable, OnMas
         for (UpdateSite site : sites) {
             for (Plugin plugin: site.getAvailables()) {
                 tryAddPluginToMap(pluginMap, plugin);
-                }
+                
             }
         }
 
@@ -597,9 +597,11 @@ public class UpdateCenter extends AbstractModelObject implements Saveable, OnMas
                 tryAddPluginToMap(pluginMap, plugin);
             }
         }
+
+ return new ArrayList<Plugin>(pluginMap.values());
 }
 
-	Public List<Plugin> tryAddPluginToMap(Plugin pluginMap, Plugin plugin){
+	public List<Plugin> tryAddPluginToMap(Map<String,Plugin> pluginMap, Plugin plugin){
 		final Plugin existing = pluginMap.get(plugin.name);
                 if (existing == null) {
                     pluginMap.put(plugin.name, plugin);
@@ -612,8 +614,6 @@ public class UpdateCenter extends AbstractModelObject implements Saveable, OnMas
                     }
                 }
 
-	}
-
         return new ArrayList<Plugin>(pluginMap.values());
     }
 
@@ -625,7 +625,7 @@ public class UpdateCenter extends AbstractModelObject implements Saveable, OnMas
      * 
      * @return a list of {@link FormValidation} for each updated Update Site
      * @throws ExecutionException 
-     * @throws InterruptedException 
+     * @throws InterruptedExceptioSn 
      * @since 1.501
      * 
      */

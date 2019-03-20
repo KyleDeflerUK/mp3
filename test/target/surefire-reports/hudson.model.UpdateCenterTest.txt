@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: hudson.scheduler.CronTabTest
+Test set: hudson.model.UpdateCenterTest
 -------------------------------------------------------------------------------
-Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.scheduler.CronTabTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.633 sec - in hudson.model.UpdateCenterTest
