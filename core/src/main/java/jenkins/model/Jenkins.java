@@ -308,6 +308,12 @@ import static javax.servlet.http.HttpServletResponse.*;
 public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLevelItemGroup, StaplerProxy, StaplerFallback,
         ModifiableViewGroup, AccessControlled, DescriptorByNameOwner,
         ModelObjectWithContextMenu, ModelObjectWithChildren {
+
+    public void updateAndTrim() {
+	updateComputerList();
+        trimLabels();
+    }
+	
     private transient final Queue queue;
 
     /**
@@ -4244,5 +4250,7 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
             throw e;
         }
     }
+
+
 
 }
