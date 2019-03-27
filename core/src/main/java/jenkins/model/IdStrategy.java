@@ -64,7 +64,15 @@ public abstract class IdStrategy extends AbstractDescribableImpl<IdStrategy> imp
      * @since 1.577
      */
     public String idFromFilename(@Nonnull String filename) {
-        return filename;
+	//test1	
+	if(0 != filename.length() ){
+		//test2
+		if(0 < filename.length() ){
+			return filename;
+		}
+	
+	}    
+	return null;
     }
 
     /**
@@ -246,7 +254,7 @@ public abstract class IdStrategy extends AbstractDescribableImpl<IdStrategy> imp
                         }
                     } else if (c == '$') {
                         StringBuilder hex = new StringBuilder(4);
-                        i++;
+                        /*i++;
                         if (i < chars.length) {
                             hex.append(chars[i]);
                         } else {
@@ -269,7 +277,13 @@ public abstract class IdStrategy extends AbstractDescribableImpl<IdStrategy> imp
                             hex.append(chars[i]);
                         } else {
                             break;
-                        }
+                        }*/
+			//new below
+			for(int i2 = i; i2 < i+4; i2++){
+				if (i < chars.length) {
+                            		hex.append(chars[i]);
+				}			
+			}			
                         buf.append(Character.valueOf((char)Integer.parseInt(hex.toString(), 16)));
                     }
                 }
