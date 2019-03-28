@@ -6,3 +6,5 @@ MP3
 3. The updateAndTrim has "Feature Envy" and fits better within the jenkins.model.Jenkins class. It should be moved to there.
 
 4. The code from likes 249-254 are repeating and iterating on something. This is a duplicated code smell. These would be best replaced with a for loop.
+
+6. The code in file LazyBuildMixInTest.java from lines 45 through line 61 are repeated exactly on line 68. This is Duplicate Code, and should be fixed by making a method out of it.
