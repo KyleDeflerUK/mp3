@@ -37,13 +37,8 @@ import org.jvnet.hudson.test.SleepBuilder;
 
 public class LazyBuildMixInTest {
 
-    @Rule public JenkinsRule r = new JenkinsRule();
-
-    @Issue("JENKINS-22395")
-    @Test public void dropLinksAfterGC() throws Exception {
-        RunListener.all().clear();  // see commit message for the discussion
-
-        FreeStyleProject p = r.createFreeStyleProject();
+    public void testStuff() throws Exception {
+	FreeStyleProject p = r.createFreeStyleProject();
         FreeStyleBuild b1 = r.buildAndAssertSuccess(p);
         FreeStyleBuild b2 = r.buildAndAssertSuccess(p);
         FreeStyleBuild b3 = r.buildAndAssertSuccess(p);
@@ -61,26 +56,20 @@ public class LazyBuildMixInTest {
         assertEquals(b3, b1a.getNextBuild());
     }
 
+    @Rule public JenkinsRule r = new JenkinsRule();
+
+    @Issue("JENKINS-22395")
+    @Test public void dropLinksAfterGC() throws Exception {
+        RunListener.all().clear();  // see commit message for the discussion
+
+        testStuff();
+    }
+
     @Issue("JENKINS-22395")
     @Test public void dropLinksAfterGC2() throws Exception {
         RunListener.all().clear();  // see commit message for the discussion
 
-        FreeStyleProject p = r.createFreeStyleProject();
-        FreeStyleBuild b1 = r.buildAndAssertSuccess(p);
-        FreeStyleBuild b2 = r.buildAndAssertSuccess(p);
-        FreeStyleBuild b3 = r.buildAndAssertSuccess(p);
-        assertEquals(b2, b1.getNextBuild());
-        assertEquals(b3, b2.getNextBuild());
-        assertEquals(null, b3.getNextBuild());
-        assertEquals(null, b1.getPreviousBuild());
-        assertEquals(b1, b2.getPreviousBuild());
-        assertEquals(b2, b3.getPreviousBuild());
-        b2.delete();
-        b1.getRunMixIn().createReference().clear();
-        FreeStyleBuild b1a = b2.getPreviousBuild();
-        assertNotSame(b1, b1a);
-        assertEquals(1, b1a.getNumber());
-        assertEquals(b3, b1a.getNextBuild());
+       testStuff();
     }
 
     @Issue("JENKINS-20662")
